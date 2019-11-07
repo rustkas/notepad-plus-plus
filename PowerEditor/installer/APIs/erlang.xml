@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="Windows-1252" ?>
+<!--
+	@author Anatolii Kosorukov
+	@module erlang
+	@type autoloaded
+	@version 1.0
+	-->
+<NotepadPlus>
+	<AutoComplete language="erlang">
+		<Environment ignoreCase="no" startFunc="(" stopFunc=")" paramSeparator="," terminal="." />
+		<KeyWord name="abs" func="yes">
+			<Overload retVal="float()" descr="Returns a float that is the arithmetical absolute value of Float.">
+				<Param name="Float = float()" />
+			</Overload>
+			<Overload retVal="integer()" descr="Returns an integer that is the arithmetical absolute value of Int.">
+				<Param name="Int = integer()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="apply" func="yes">
+			<Overload retVal="term()" descr="Returns the result of applying Function in Module to Args.">
+				<Param name="Module = module()" />
+				<Param name="Function = atom()"  />
+				<Param name="Args = [term()]"  />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="atom_to_binary" func="yes">
+			<Overload retVal="binary()" descr="Returns a binary corresponding to the text representation of Atom.">
+				<Param name="Atom = atom()" />
+				<Param name="Encoding = latin1 | unicode | utf8"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="atom_to_list" func="yes">
+			<Overload retVal="string()" descr="Returns a string corresponding to the text representation of Atom.">
+				<Param name="Atom = atom()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="binary_part" func="yes">
+			<Overload retVal="binary()" descr="Extracts the part of the binary described by PosLen.">
+				<Param name="Subject" />
+				<Param name="PosLen" />
+			</Overload>
+				<Overload retVal="binary()" descr="The same as binary_part(Subject, {Start, Length}=PosLen).">
+				<Param name="Subject" />
+				<Param name="Start" />
+				<Param name="Length" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="binary_to_atom" func="yes">
+			<Overload retVal="atom()" descr="Returns the atom whose text representation is Binary.">
+				<Param name="Binary = binary()" />
+				<Param name="Encoding = latin1 | unicode | utf8" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="binary_to_existing_atom" func="yes">
+			<Overload retVal="atom()" descr="As binary_to_atom/2, but the atom must exist.">
+				<Param name="Binary = binary()" />
+				<Param name="Encoding = latin1 | unicode | utf8" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="binary_to_float" func="yes">
+			<Overload retVal="float()" descr="Returns the float whose text representation is Binary.">
+				<Param name="Binary = binary()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="binary_to_integer" func="yes">
+			<Overload retVal="integer()" descr="Returns an integer whose text representation is Binary.">
+				<Param name="Binary = binary()" />
+			</Overload>
+			<Overload retVal="integer()" descr="Returns an integer whose text representation in base Base is Binary.">
+				<Param name="Binary = binary()" />
+				<Param name="Base=2..36" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="binary_to_list" func="yes">
+			<Overload retVal="[byte()]" descr="Returns a list of integers corresponding to the bytes of Binary.">
+				<Param name="Binary = binary()" />
+			</Overload>
+			<Overload retVal="[byte()]" descr="As binary_to_list/1, but returns a list of integers corresponding to the bytes from position Start to position Stop in Binary. &#x0a;The positions in the binary are numbered starting from 1.">
+				<Param name="Binary = binary()" />
+				<Param name="Start" />
+				<Param name="Stop" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="binary_to_term" func="yes">
+			<Overload retVal="term()" descr="Returns an Erlang term that is the result of decoding binary object Binary, which must be encoded according to the Erlang external term format.">
+				<Param name="Binary = ext_binary()" />
+			</Overload>
+			<Overload retVal="term() | {term(), integer() >= 1}" descr="As binary_to_term/1, but takes options.">
+				<Param name="Binary = ext_binary()" />
+				<Param name="[safe | used]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="byte_size" func="yes">
+			<Overload retVal="integer() >= 0" descr="Returns an integer that is the number of bytes needed to contain Bitstring.">
+				<Param name="Bitstring = bitstring()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ceil" func="yes">
+			<Overload retVal="integer()" descr="Returns the smallest integer not less than Number.">
+				<Param name="Number = number()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="check_old_code" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Module has old code.">
+				<Param name="Module = module()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="check_process_code" func="yes">
+			<Overload retVal="CheckResult = boolean()" descr="Checks if the node local process identified by Pid executes old code for Module.">
+				<Param name="Pid = pid()" />
+				<Param name="Module = module()" />
+			</Overload>
+			<Overload retVal="CheckResult = boolean() | async" descr="Checks if the node local process identified by Pid executes old code for Module.">
+				<Param name="Pid = pid()" />
+				<Param name="Module = module()" />
+				<Param name="RequestId = term()" />
+				<Param name="Option = {async, RequestId} | {allow_gc, boolean()}" />
+				<Param name="OptionList = [Option]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="date" func="yes">
+			<Overload retVal="{Year, Month, Day}" descr="Returns the current date as {Year, Month, Day}.">
+				<Param name="Date = calendar:date()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="delete_module" func="yes">
+			<Overload retVal="true | undefined" descr="Makes the current code for Module become old code and deletes all references for this module from the export table.">
+				<Param name="Module = module()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="demonitor" func="yes">
+			<Overload retVal="true" descr="If MonitorRef is a reference that the calling process obtained by calling monitor/2, this monitoring is turned off. If the monitoring is already turned off, nothing happens.">
+				<Param name="MonitorRef = reference()" />
+			</Overload>
+			<Overload retVal="true" descr="If MonitorRef is a reference that the calling process obtained by calling monitor/2, this monitoring is turned off. If the monitoring is already turned off, nothing happens.">
+				<Param name="MonitorRef = reference()" />
+				<Param name="OptionList = [flush | info]" />
+			</Overload>
+			<Overload retVal="true" descr=" is equivalent to demonitor(MonitorRef).">
+				<Param name="MonitorRef = reference()" />
+				<Param name="[]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="disconnect_node" func="yes">
+			<Overload retVal="boolean() | ignored" descr="Forces the disconnection of a node. This appears to the node Node as if the local node has crashed. This BIF is mainly used in the Erlang network authentication protocols.&#x0a;Returns true if disconnection succeeds, otherwise false. If the local node is not alive, ignored is returned.">
+				<Param name="Node = node()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="element" func="yes">
+			<Overload retVal="term()" descr="Returns the Nth element (numbering from 1) of Tuple.">
+				<Param name="N = integer() >= 1" />
+				<Param name="Tuple = tuple()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="erase" func="yes">
+			<Overload retVal="[{Key, Val}]" descr="Returns the process dictionary and deletes it.">
+			</Overload>
+			<Overload retVal="Val | undefined" descr="Returns the value Val associated with Key and deletes it from the process dictionary. Returns undefined if no value is associated with Key.">
+				<Param name="Key = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="error" func="yes">
+			<Overload retVal="no_return()" descr="Stops the execution of the calling process with the reason Reason, where Reason is any term. The exit reason is {Reason, Where}, where Where is a list of the functions most recently called (the current function first). As evaluating this function causes the process to terminate, it has no return value.">
+				<Param name="Reason = term()" />
+			</Overload>
+			<Overload retVal="no_return()" descr="Stops the execution of the calling process with the reason Reason, where Reason is any term. The exit reason is {Reason, Where}, where Where is a list of the functions most recently called (the current function first). Args is expected to be the list of arguments for the current function; in Beam it is used to provide the arguments for the current function in the term Where. As evaluating this function causes the process to terminate, it has no return value.">
+				<Param name="Reason = term()" />
+				<Param name="Args = [term()]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="exit" func="yes">
+			<Overload retVal="no_return()" descr="Stops the execution of the calling process with exit reason Reason, where Reason is any term. As evaluating this function causes the process to terminate, it has no return value.">
+				<Param name="Reason = term()" />
+			</Overload>
+			<Overload retVal="no_return()" descr="Sends an exit signal with exit reason Reason to the process or port identified by Pid.">
+				<Param name="Pid = pid() | port()" />
+				<Param name="Reason = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="float" func="yes">
+			<Overload retVal="float()" descr="Returns a float by converting Number to a float.">
+				<Param name="Number = number()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="float_to_binary" func="yes">
+			<Overload retVal="binary()" descr="The same as float_to_binary(Float,[{scientific,20}]).&#x0a;Returns a binary corresponding to the text representation of Float using fixed decimal point formatting. Options behaves in the same way as float_to_list/2.">
+				<Param name="Float = float()" />
+			</Overload>
+			<Overload retVal="binary()" descr="The same as float_to_binary(Float,[{scientific,20}]).&#x0a;Returns a binary corresponding to the text representation of Float using fixed decimal point formatting. Options behaves in the same way as float_to_list/2.">
+				<Param name="Float = float()" />
+				<Param name="Options = [{decimals, Decimals :: 0..253} | {scientific, Decimals :: 0..249} | compact]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="float_to_list" func="yes">
+			<Overload retVal="string()" descr="TReturns a string corresponding to the text representation of Float using fixed decimal point formatting.">
+				<Param name="Float = float()" />
+			</Overload>
+			<Overload retVal="string()" descr="Returns a string corresponding to the text representation of Float using fixed decimal point formatting.">
+				<Param name="Float = float()" />
+				<Param name="Options = [{decimals, Decimals :: 0..253} | {scientific, Decimals :: 0..249} | compact]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="floor" func="yes">
+			<Overload retVal="integer()" descr="Returns the largest integer not greater than Number.">
+				<Param name="Number = number()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="garbage_collect" func="yes">
+			<Overload retVal="true" descr="Forces an immediate garbage collection of the executing process. The function is not to be used unless it has been noticed (or there are good reasons to suspect) that the spontaneous garbage collection will occur too late or not at all.">
+			</Overload>
+			<Overload retVal="GCResult = boolean()" descr="Garbage collects the node local process identified by Pid.">
+				<Param name="Pid = pid()" />
+			</Overload>
+			<Overload retVal="GCResult = boolean()" descr="Garbage collects the node local process identified by Pid.">
+				<Param name="Pid = pid()" />
+				<Param name="OptionList = [{async, RequestId} | {type, major | minor}]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="get" func="yes">
+			<Overload retVal="[{Key, Val}]" descr="Returns the process dictionary as a list of {Key, Val} tuples.">
+			</Overload>
+			<Overload retVal="Val | undefined" descr="Returns the value Val associated with Key in the process dictionary, or undefined if Key does not exist.">
+				<Param name="Key = Val = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="get_keys" func="yes">
+			<Overload retVal="[Key]" descr="Returns a list of all keys present in the process dictionary.">
+			</Overload>
+			<Overload retVal="[Key]" descr="Returns a list of keys that are associated with the value Val in the process dictionary.">
+				<Param name="Val = Key = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="group_leader" func="yes">
+			<Overload retVal="pid()" descr="Returns the process identifier of the group leader for the process evaluating the function.">
+			</Overload>
+			<Overload retVal="true" descr="Sets the group leader of Pid to GroupLeader. Typically, this is used when a process started from a certain shell is to have another group leader than init.">
+				<Param name="GroupLeader = pid()" />
+				<Param name="Pid = pid()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="halt" func="yes">
+			<Overload retVal="no_return()" descr="Halts the Erlang runtime system. Has no return value.">
+			</Overload>
+			<Overload retVal="true" descr="Halts the Erlang runtime system. Has no return value.">
+				<Param name="Status = integer() >= 0 | abort | string()" />
+			</Overload>
+			<Overload retVal="true" descr="Halts the Erlang runtime system. Has no return value.">
+				<Param name="Status = integer() >= 0 | abort | string()" />
+				<Param name="Options = [{flush, boolean()}]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="hd" func="yes">
+			<Overload retVal="term()" descr="Returns the head of List, that is, the first element.">
+				<Param name="List = [term(), ...]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="integer_to_binary" func="yes">
+			<Overload retVal="binary()" descr="Returns a binary corresponding to the text representation of Integer.">
+				<Param name="Integer = integer()" />
+			</Overload>
+			<Overload retVal="binary()" descr="Returns a binary corresponding to the text representation of Integer in base Base.">
+				<Param name="Integer = integer()" />
+				<Param name="Base = 2..36" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="integer_to_list" func="yes">
+			<Overload retVal="string()" descr="Returns a string corresponding to the text representation of Integer.">
+				<Param name="Integer = integer()" />
+			</Overload>
+			<Overload retVal="string()" descr="Returns a string corresponding to the text representation of Integer in base Base.">
+				<Param name="Integer = integer()" />
+				<Param name="Base = 2..36" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="iolist_size" func="yes">
+			<Overload retVal="integer() >= 0" descr="Returns an integer, that is the size in bytes, of the binary that would be the result of iolist_to_binary(Item).">
+				<Param name="Item = iolist() | binary()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="iolist_to_binary" func="yes">
+			<Overload retVal="binary()" descr="Returns a binary that is made from the integers and binaries in IoListOrBinary.">
+				<Param name="IoListOrBinary = iolist() | binary()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_alive" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if the local node is alive (that is, if the node can be part of a distributed system), otherwise false.">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_atom" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Term is an atom, otherwise false.">
+				<Param name="Term = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_binary" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Term is a binary, otherwise false.">
+				<Param name="Term = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_bitstring" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Term is a bitstring (including a binary), otherwise false.">
+				<Param name="Term = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_boolean" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Term is the atom true or the atom false (that is, a boolean).">
+				<Param name="Term = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_float" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Term is a floating point number, otherwise false.">
+				<Param name="Term = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_function" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Term is a fun, otherwise false.">
+				<Param name="Term = term()" />
+			</Overload>
+			<Overload retVal="boolean()" descr="Returns true if Term is a fun that can be applied with Arity number of arguments, otherwise false.">
+				<Param name="Term = term()" />
+				<Param name="Arity = arity()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_integer" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Term is an integer, otherwise false.">
+				<Param name="Term = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_list" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Term is a list with zero or more elements, otherwise false.">
+				<Param name="Term = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_map" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Term is a map, otherwise false.">
+				<Param name="Term = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_map_key" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if map Map contains Key and returns false if it does not contain the Key.">
+				<Param name="Key = term()" />
+				<Param name="Map = map()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_number" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Term is an integer or a floating point number.">
+				<Param name="Term = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_pid" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Term is a process identifier, otherwise false.">
+				<Param name="Term = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_port" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Term is a port identifier, otherwise false.">
+				<Param name="Term = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_process_alive" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Term is a port identifier, otherwise false.">
+				<Param name="Pid = pid()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_record" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Term is a tuple and its first element is RecordTag. Otherwise returns false.">
+				<Param name="Term = term()" />
+				<Param name="RecordTag = atom()" />
+			</Overload>
+			<Overload retVal="boolean()" descr="Returns true if Term is a tuple, its first element is RecordTag, and its size is Size.">
+				<Param name="Term = term()" />
+				<Param name="RecordTag = atom()" />
+				<Param name="Size = integer() >= 0" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_reference" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Term is a reference, otherwise false.">
+				<Param name="Term = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="is_tuple" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if Term is a tuple, otherwise false.">
+				<Param name="Term = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="length" func="yes">
+			<Overload retVal="integer() >= 0" descr="Returns the length of List">
+				<Param name="List = [term()]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="link" func="yes">
+			<Overload retVal="true" descr="Creates a link between the calling process and another process (or port) PidOrPort, if there is not such a link already. If a process attempts to create a link to itself, nothing is done. &#x0a;Returns true.">
+				<Param name="PidOrPort = pid() | port()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="list_to_atom" func="yes">
+			<Overload retVal="atom()" descr="Returns the atom whose text representation is String.">
+				<Param name="String = string()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="list_to_binary" func="yes">
+			<Overload retVal="binary()" descr="Returns a binary that is made from the integers and binaries in IoList.">
+				<Param name="IoList = iolist()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="list_to_bitstring" func="yes">
+			<Overload retVal="bitstring()" descr="Returns a bitstring that is made from the integers and bitstrings in BitstringList.">
+				<Param name="BitstringList = bitstring_list()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="list_to_existing_atom" func="yes">
+			<Overload retVal="atom()" descr="Returns the atom whose text representation is String, but only if there already exists such atom.">
+				<Param name="String = string()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="list_to_float" func="yes">
+			<Overload retVal="float()" descr="Returns the float whose text representation is String.">
+				<Param name="String = string()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="list_to_integer" func="yes">
+			<Overload retVal="integer()" descr="Returns an integer whose text representation is String.">
+				<Param name="String = string()" />
+			</Overload>
+			<Overload retVal="integer()" descr="Returns an integer whose text representation in base Base is String.">
+				<Param name="String = string()" />
+				<Param name="Base = 2..36" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="list_to_pid" func="yes">
+			<Overload retVal="pid()" descr="Returns a process identifier whose text representation is a String.">
+				<Param name="String = string()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="list_to_port" func="yes">
+			<Overload retVal="port()" descr="Returns a port identifier whose text representation is a String.">
+				<Param name="String = string()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="list_to_ref" func="yes">
+			<Overload retVal="reference()" descr="Returns a reference whose text representation is a String.">
+				<Param name="String = string()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="list_to_tuple" func="yes">
+			<Overload retVal="tuple()" descr="Returns a tuple corresponding to List.">
+				<Param name="List = [term()]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="load_module" func="yes">
+			<Overload retVal="Reason = badfile | not_purged | on_load" descr="If Binary contains the object code for module Module, this BIF loads that object code. If the code for module Module already exists, all export references are replaced so they point to the newly loaded code. The previously loaded code is kept in the system as old code, as there can still be processes executing that code.">
+				<Param name="Module = module()" />
+				<Param name="Binary = binary()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="make_ref" func="yes">
+			<Overload retVal="reference()" descr="Returns a unique reference. The reference is unique among connected nodes.">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="map_get" func="yes">
+			<Overload retVal="Value = any()" descr="Returns value Value associated with Key if Map contains Key.">
+			<Param name="Key = any()" />
+			<Param name="Map = map()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="map_size" func="yes">
+			<Overload retVal="integer() >= 0" descr="Returns an integer, which is the number of key-value pairs in Map.">
+			<Param name="Map = map()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="max" func="yes">
+			<Overload retVal="Maximum = term()" descr="Returns the largest of Term1 and Term2. &#x0a;If the terms are equal, Term1 is returned.">
+			<Param name="Term1 = term()" />
+			<Param name="Term2 = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="max" func="yes">
+			<Overload retVal="Minimum = term()" descr="Returns the smallest of Term1 and Term2. &#x0a;If the terms are equal, Term1 is returned.">
+			<Param name="Term1 = term()" />
+			<Param name="Term2 = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="module_loaded" func="yes">
+			<Overload retVal="boolean()" descr="Returns true if the module Module is loaded, otherwise false. It does not attempt to load the module.">
+			<Param name="Module = module()" />
+			</Overload>
+		</KeyWord>
+ 		<KeyWord name="monitor" func="yes">
+			<Overload retVal="MonitorRef = reference()" descr="Sends a monitor request of type Type to the entity identified by Item.">
+				<Param name="Type :: process" />
+				<Param name="Item :: pid() | atom() | {atom(), node()}" />
+			</Overload>
+			<Overload retVal="MonitorRef = reference()" descr="Sends a monitor request of type Type to the entity identified by Item.">
+				<Param name="Type :: port" />
+				<Param name="Item :: port() | registered_name()}" />
+			</Overload>
+			<Overload retVal="MonitorRef = reference()" descr="Sends a monitor request of type Type to the entity identified by Item.">
+				<Param name="Type :: time_offset" />
+				<Param name="Item :: clock_service}" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="monitor_node" func="yes">
+			<Overload retVal="true" descr="Monitor the status of the node Node. If Flag is true, monitoring is turned on. If Flag is false, monitoring is turned off.">
+				<Param name="Node = node()" />
+				<Param name="Flag = boolean()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="node" func="yes">
+			<Overload retVal="Node = node()" descr="Returns the name of the local node. &#x0a;If the node is not alive, nonode@nohost is returned instead.">
+			</Overload>
+			<Overload retVal="Node = node()" descr="Returns the node where Arg originates. Arg can be a process identifier, a reference, or a port. &#x0a;If the local node is not alive, nonode@nohost is returned.">
+				<Param name="Arg = pid() | port() | reference()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="nodes" func="yes">
+			<Overload retVal="Nodes = [node()]" descr="Returns a list of all visible nodes in the system, except the local node. Same as nodes(visible).">
+			</Overload>
+			<Overload retVal="Nodes = [node()]" descr="Returns a list of nodes according to the argument specified. The returned result, when the argument is a list, is the list of nodes satisfying the disjunction(s) of the list elements.">
+				<Param name="Arg = NodeType | [visible | hidden | connected | this | known]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="open_port" func="yes">
+			<Overload retVal="port()" descr="Returns a port identifier as the result of opening a new Erlang port. A port can be seen as an external Erlang process.">
+				<Param name="PortName" />
+				<Param name="PortSettings" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="pid_to_list" func="yes">
+			<Overload retVal="string()" descr="Returns a string corresponding to the text representation of Pid.">
+				<Param name="Pid = pid()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="port_close" func="yes">
+			<Overload retVal="true" descr="Closes an open port. Roughly the same as Port ! {self(), close} except for the error behavior (see below), being synchronous, and that the port does not reply with {Port, closed}. &#x0a;Any process can close a port with port_close/1, not only the port owner (the connected process). &#x0a;If the calling process is linked to the port identified by Port, the exit signal from the port is guaranteed to be delivered before port_close/1 returns.">
+				<Param name="Port = port() | atom()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="port_command" func="yes">
+			<Overload retVal="true" descr="Sends data to a port. Same as Port ! {PortOwner, {command, Data}} except for the error behavior and being synchronous (see below). &#x0a;Any process can send data to a port with port_command/2, not only the port owner (the connected process).">
+				<Param name="Port = port() | atom()" />
+				<Param name="Data = iodata()" />
+			</Overload>
+			<Overload retVal="true" descr="Sends data to a port. port_command(Port, Data, []) equals port_command(Port, Data).&#x0a;If the port command is aborted, false is returned, otherwise true.">
+				<Param name="Port = port() | atom()" />
+				<Param name="Data = iodata()" />
+				<Param name="OptionList = [force | nosuspend]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="port_connect" func="yes">
+			<Overload retVal="true" descr="Sets the port owner (the connected port) to Pid.">
+				<Param name="Port = port() | atom()" />
+				<Param name="Pid = pid()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="port_control" func="yes">
+			<Overload retVal="iodata() | binary()" descr="Performs a synchronous control operation on a port. &#x0a;The meaning of Operation and Data depends on the port, that is, on the port driver. &#x0a;Not all port drivers support this control feature.">
+				<Param name="Port = port() | atom()" />
+				<Param name="Operation = integer()" />
+				<Param name="Data = iodata()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="port_to_list" func="yes">
+			<Overload retVal="string()" descr="Returns a string corresponding to the text representation of the port identifier Port.">
+				<Param name="Port = port()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="pre_loaded" func="yes">
+			<Overload retVal="[module()]" descr="Returns a list of Erlang modules that are preloaded in the system.">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="process_flag" func="yes">
+			<Overload retVal="OldBoolean = boolean()" descr="Returns the old value of the flag.">
+				<Param name="Flag :: trap_exit" />
+				<Param name="Boolean = boolean()" />
+			</Overload>
+			<Overload retVal="OldModule = atom()" descr="Returns the old value of the flag.">
+				<Param name="Flag :: trap_exit" />
+				<Param name="Module = atom()" />
+			</Overload>
+			<Overload retVal="OldMinHeapSize = integer() >= 0" descr="Returns the old value of the flag.">
+				<Param name="Flag :: min_heap_size" />
+				<Param name="MinHeapSize = integer() >= 0" />
+			</Overload>
+			<Overload retVal="OldMaxHeapSize = max_heap_size()" descr="Returns the old value of the flag.">
+				<Param name="Flag :: max_heap_size" />
+				<Param name="MaxHeapSize = max_heap_size()" />
+			</Overload>
+			<Overload retVal="OldMQD = message_queue_data()" descr="Returns the old value of the flag.">
+				<Param name="Flag :: message_queue_data" />
+				<Param name="MQD = message_queue_data() = off_heap | on_heap" />
+			</Overload>
+			<Overload retVal="OldLevel = priority_level()" descr="Returns the old value of the flag.">
+				<Param name="Flag :: priority" />
+				<Param name="Level = priority_level() = low | normal | high | max" />
+			</Overload>
+			<Overload retVal="OldN = 0..10000" descr="Returns the old value of the flag.">
+				<Param name="Flag :: save_calls" />
+				<Param name="N = 0..10000" />
+			</Overload>
+			<Overload retVal="OldBoolean = boolean()" descr="Returns the old value of the flag.">
+				<Param name="Flag :: sensitive" />
+				<Param name="Boolean = boolean()" />
+			</Overload>
+			<Overload retVal="OldValue = integer() >= 0" descr="Returns the old value of the flag.">
+				<Param name="Pid = pid()" />
+				<Param name="Flag = save_calls" />
+				<Param name="Value = integer() >= 0" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="process_info" func="yes">
+			<Overload retVal="Info = [InfoTuple] | undefined" descr="Returns a list containing InfoTuples with miscellaneous information about the process identified by Pid, or undefined if the process is not alive.">
+				<Param name="Pid = pid()" />
+			</Overload>
+			<Overload retVal="Info = [InfoTuple] | undefined" descr="Returns information about the process identified by Pid, as specified by Item or ItemList. Returns undefined if the process is not alive.">
+				<Param name="Pid = pid()" />
+				<Param name="Item = process_info_item()" />
+			</Overload>
+			<Overload retVal="Info = [InfoTuple] | undefined" descr="Returns information about the process identified by Pid, as specified by Item or ItemList. Returns undefined if the process is not alive.">
+				<Param name="Pid = pid()" />
+				<Param name="ItemList = [Item]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="processes" func="yes">
+			<Overload retVal="[pid()]" descr="Returns a list of process identifiers corresponding to all the processes currently existing on the local node.">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="purge_module" func="yes">
+			<Overload retVal="true" descr="Removes old code for Module. Before this BIF is used, check_process_code/2 is to be called to check that no processes execute old code in the module.">
+				<Param name="Module = atom()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="put" func="yes">
+			<Overload retVal="term()" descr="Adds a new Key to the process dictionary, associated with the value Val, and returns undefined. If Key exists, the old value is deleted and replaced by Val, and the function returns the old value.">
+				<Param name="Key = term()" />
+				<Param name="Val = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ref_to_list" func="yes">
+			<Overload retVal="string()" descr="Returns a string corresponding to the text representation of Ref.">
+				<Param name="Ref = reference()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="register" func="yes">
+			<Overload retVal="true" descr="Associates the name RegName with a process identifier (pid) or a port identifier. RegName, which must be an atom, can be used instead of the pid or port identifier in send operator (RegName ! Message).">
+				<Param name="RegName = atom()" />
+				<Param name="PidOrPort = port() | pid()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="register" func="yes">
+			<Overload retVal="true" descr="Associates the name RegName with a process identifier (pid) or a port identifier. RegName, which must be an atom, can be used instead of the pid or port identifier in send operator (RegName ! Message).">
+				<Param name="RegName = atom()" />
+				<Param name="PidOrPort = port() | pid()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="registered" func="yes">
+			<Overload retVal="[RegName]" descr="Returns a list of names that have been registered using register/2.">
+				<Param name="RegName = atom()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="round" func="yes">
+			<Overload retVal="integer()" descr="Returns an integer by rounding Number.">
+				<Param name="Number = number()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="self" func="yes">
+			<Overload retVal="pid()" descr="Returns the process identifier of the calling process.">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="setelement" func="yes">
+			<Overload retVal="integer()" descr="Returns a tuple that is a copy of argument Tuple1 with the element specified by integer argument Index (the first element is the element with index 1) replaced by argument Value.">
+				<Param name="Index = integer() >= 1" />
+				<Param name="Tuple1 = tuple()" />
+				<Param name="Value = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="size" func="yes">
+			<Overload retVal="integer() >= 0" descr="Returns the number of elements in a tuple or the number of bytes in a binary or bitstring.">
+				<Param name="Item = tuple() | binary()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="spawn" func="yes">
+			<Overload retVal="pid()" descr="Returns the process identifier of a new process started by the application of Fun to the empty list [].">
+				<Param name="Fun = function()" />
+			</Overload>
+			<Overload retVal="pid()" descr="Returns the process identifier of a new process started by the application of Fun to the empty list [] on Node. If Node does not exist, a useless pid is returned. Otherwise works like spawn/3.">
+				<Param name="Node = node()" />
+				<Param name="Fun = function()" />
+			</Overload>
+			<Overload retVal="pid()" descr="Returns the process identifier of a new process started by the application of Module:Function to Args.">
+				<Param name="Module = module()" />
+				<Param name="Function = atom()" />
+				<Param name="Args = [term()]" />
+			</Overload>
+			<Overload retVal="pid()" descr="Returns the process identifier (pid) of a new process started by the application of Module:Function to Args on Node. If Node does not exist, a useless pid is returned.">
+				<Param name="Node = node()" />
+				<Param name="Module = module()" />
+				<Param name="Function = atom()" />
+				<Param name="Args = [term()]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="spawn_link" func="yes">
+			<Overload retVal="pid()" descr="Returns the process identifier of a new process started by the application of Fun to the empty list []. A link is created between the calling process and the new process, atomically.">
+				<Param name="Fun = function()" />
+			</Overload>
+			<Overload retVal="pid()" descr="Returns the process identifier (pid) of a new process started by the application of Fun to the empty list [] on Node. A link is created between the calling process and the new process, atomically. If Node does not exist, a useless pid is returned and an exit signal with reason noconnection is sent to the calling process.">
+				<Param name="Node = node()" />
+				<Param name="Fun = function()" />
+			</Overload>
+			<Overload retVal="pid()" descr="Returns the process identifier of a new process started by the application of Module:Function to Args. A link is created between the calling process and the new process, atomically.">
+				<Param name="Module = module()" />
+				<Param name="Function = atom()" />
+				<Param name="Args = [term()]" />
+			</Overload>
+			<Overload retVal="pid()" descr="Returns the process identifier (pid) of a new process started by the application of Module:Function to Args on Node. A link is created between the calling process and the new process, atomically. If Node does not exist, a useless pid is returned and an exit signal with reason noconnection is sent to the calling process.">
+				<Param name="Node = node()" />
+				<Param name="Module = module()" />
+				<Param name="Function = atom()" />
+				<Param name="Args = [term()]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="spawn_monitor" func="yes">
+			<Overload retVal="{pid(), reference()}" descr="Returns the process identifier of a new process, started by the application of Fun to the empty list [], and a reference for a monitor created to the new process.">
+				<Param name="Fun = function()" />
+			</Overload>
+			<Overload retVal="{pid(), reference()}" descr="A new process is started by the application of Module:Function to Args. The process is monitored at the same time. Returns the process identifier and a reference for the monitor.">
+				<Param name="Module = module()" />
+				<Param name="Function = atom()" />
+				<Param name="Args = [term()]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="spawn_opt" func="yes">
+			<Overload retVal="pid() | {pid(), reference()}" descr="Returns the process identifier (pid) of a new process started by the application of Fun to the empty list [].">
+				<Param name="Fun = function()" />
+				<Param name="Options = [spawn_opt_option()]" />
+			</Overload>
+			<Overload retVal="pid() | {pid(), reference()}" descr="Returns the process identifier (pid) of a new process started by the application of Fun to the empty list [] on Node. If Node does not exist, a useless pid is returned.">
+				<Param name="Node = node()" />
+				<Param name="Function = function()" />
+				<Param name="Options = [spawn_opt_option()]" />
+			</Overload>
+			<Overload retVal="pid() | {pid(), reference()}" descr="Works as spawn/3, except that an extra option list is specified when creating the process.">
+				<Param name="Module = module()" />
+				<Param name="Function = atom()" />
+				<Param name="Args = [term()]" />
+				<Param name="Options = [spawn_opt_option()]" />
+			</Overload>
+			<Overload retVal="pid() | {pid(), reference()}" descr="Returns the process identifier (pid) of a new process started by the application of Module:Function to Args on Node. If Node does not exist, a useless pid is returned.">
+				<Param name="Node = node()" />
+				<Param name="Module = module()" />
+				<Param name="Function = atom()" />
+				<Param name="Args = [term()]" />
+				<Param name="Options = [spawn_opt_option()]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="split_binary" func="yes">
+			<Overload retVal="{binary(), binary()}" descr="Returns a tuple containing the binaries that are the result of splitting Bin into two parts at position Pos. This is not a destructive operation. After the operation, there are three binaries altogether.">
+				<Param name="Bin = binary()" />
+				<Param name="Pos = integer() >= 0" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="statistics" func="yes">
+			<Overload retVal="[ActiveTasks = integer() >= 0]" descr="Returns the same as statistics(active_tasks_all) with the exception that no information about the dirty IO run queue and its associated schedulers is part of the result. That is, only tasks that are expected to be CPU bound are part of the result.">
+				<Param name="Item :: active_tasks" />
+			</Overload>
+			<Overload retVal="[ActiveTasks = integer() >= 0]" descr="Returns a list where each element represents the amount of active processes and ports on each run queue and its associated schedulers.">
+				<Param name="Item :: active_tasks_all" />
+			</Overload>
+			<Overload retVal="{ContextSwitches, 0}" descr="Returns the total number of context switches since the system started.">
+				<Param name="Item :: context_switches" />
+			</Overload>
+			<Overload retVal="{Total_Exact_Reductions = integer() >= 0, Exact_Reductions_Since_Last_Call = integer() >= 0}" descr="Returns the number of exact reductions.">
+				<Param name="Item :: exact_reductions" />
+			</Overload>
+			<Overload retVal="{Number_of_GCs, Words_Reclaimed, 0}" descr="Returns information about garbage collection.">
+				<Param name="Item :: garbage_collection" />
+			</Overload>
+			<Overload retVal="{{input, Input}, {output, Output}}" descr="Returns Input, which is the total number of bytes received through ports, and Output, which is the total number of bytes output to ports.">
+				<Param name="Item :: io" />
+			</Overload>
+			<Overload retVal="[MSAcc_Thread] | undefined" descr="">
+				<Param name="Item :: microstate_accounting" />
+			</Overload>
+			<Overload retVal="{Total_Reductions, Reductions_Since_Last_Call}" descr="Returns information about reductions.">
+				<Param name="Item :: reductions" />
+			</Overload>
+			<Overload retVal="integer() >= 0" descr="Returns the total length of all normal run-queues.">
+				<Param name="Item :: run_queue" />
+			</Overload>
+			<Overload retVal="[RunQueueLength = integer() >= 0]" descr="Returns the same as statistics(run_queue_lengths_all) with the exception that no information about the dirty IO run queue is part of the result.">
+				<Param name="Item :: run_queue_lengths" />
+			</Overload>
+			<Overload retVal="[RunQueueLength = integer() >= 0]" descr="Returns a list where each element represents the amount of processes and ports ready to run for each run queue.">
+				<Param name="Item :: run_queue_lengths_all" />
+			</Overload>
+			<Overload retVal="{Total_Run_Time = integer() >= 0, Time_Since_Last_Call = integer() >= 0}" descr="Returns information about runtime, in milliseconds.">
+				<Param name="Item :: runtime" />
+			</Overload>
+			<Overload retVal="[{SchedulerId, ActiveTime, TotalTime}] | undefined" descr="Returns a list of tuples with {SchedulerId, ActiveTime, TotalTime}, where SchedulerId is an integer ID of the scheduler, ActiveTime is the duration the scheduler has been busy, and TotalTime is the total time duration since scheduler_wall_time activation for the specific scheduler.">
+				<Param name="Item :: scheduler_wall_time" />
+			</Overload>
+			<Overload retVal="[{SchedulerId, ActiveTime, TotalTime}] | undefined" descr="The same as statistics(scheduler_wall_time), except that it also include information about all dirty I/O schedulers.">
+				<Param name="Item :: scheduler_wall_time_all" />
+			</Overload>
+			<Overload retVal="ActiveTasks = integer() >= 0" descr="The same as calling lists:sum(statistics(active_tasks)), but more efficient.">
+				<Param name="Item :: total_active_tasks" />
+			</Overload>
+			<Overload retVal="ActiveTasks = integer() >= 0" descr="The same as calling lists:sum(statistics(active_tasks_all)), but more efficient.">
+				<Param name="Item :: total_active_tasks_all" />
+			</Overload>
+			<Overload retVal="TotalRunQueueLengths = integer() >= 0" descr="The same as calling lists:sum(statistics(run_queue_lengths)), but more efficient.">
+				<Param name="Item :: total_run_queue_lengths" />
+			</Overload>
+			<Overload retVal="TotalRunQueueLengths = integer() >= 0" descr="The same as calling lists:sum(statistics(run_queue_lengths_all)), but more efficient.">
+				<Param name="Item :: total_run_queue_lengths_all" />
+			</Overload>
+			<Overload retVal="{Total_Wallclock_Time = integer() >= 0,
+               Wallclock_Time_Since_Last_Call = integer() >= 0}" descr="Returns information about wall clock. wall_clock can be used in the same manner as runtime, except that real time is measured as opposed to runtime or CPU time.">
+				<Param name="Item :: wall_clock" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="term_to_binary" func="yes">
+			<Overload retVal="ext_binary()" descr="Returns a binary data object that is the result of encoding Term according to the Erlang external term format.">
+				<Param name="Term = term()" />
+			</Overload>
+			<Overload retVal="ext_binary()" descr="Returns a binary data object that is the result of encoding Term according to the Erlang external term format.">
+				<Param name="Term = term()" />
+				<Param name="Options = [compressed | {compressed, Level :: 0..9} | {minor_version, Version :: 0..2}]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="throw" func="yes">
+			<Overload retVal="no_return()" descr="A non-local return from a function. If evaluated within a catch, catch returns value Any.">
+				<Param name="Any = term()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="time" func="yes">
+			<Overload retVal="no_return()" descr="Returns the current time as {Hour, Minute, Second}.">
+				<Param name="Time = calendar:time()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="tl" func="yes">
+			<Overload retVal="no_return()" descr="Returns the tail of List, that is, the list minus the first element.">
+				<Param name="List = [term(), ...]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="trunc" func="yes">
+			<Overload retVal="integer()" descr="Returns an integer by truncating Number.">
+				<Param name="Number = number()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="tuple_size" func="yes">
+			<Overload retVal="integer() >= 0" descr="Returns an integer that is the number of elements in Tuple.">
+				<Param name="Tuple = tuple()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="tuple_to_list" func="yes">
+			<Overload retVal="[term()]" descr="Returns a list corresponding to Tuple. Tuple can contain any Erlang terms.">
+				<Param name="Tuple = tuple()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="unlink" func="yes">
+			<Overload retVal="true" descr="Removes the link, if there is one, between the calling process and the process or port referred to by Id.">
+				<Param name="Id = pid() | port()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="unregister" func="yes">
+			<Overload retVal="true" descr="Removes the registered name RegName associated with a process identifier or a port identifier.">
+				<Param name="RegName = atom()" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="whereis" func="yes">
+			<Overload retVal="pid() | port() | undefined" descr="Returns the process identifier or port identifier with the registered name RegName. Returns undefined if the name is not registered.">
+				<Param name="RegName = atom()" />
+			</Overload>
+		</KeyWord>
+	</AutoComplete>
+</NotepadPlus>		
